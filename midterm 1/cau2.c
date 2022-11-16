@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 int main(){
-    double n = 35, m;
+    double n, m;
     int a = 18000, b = 8000, c = 6000, d = 4000;
-    printf("Nguyen Huynh Anh Khoa\n");
-    // printf("Vui long nhap vao so quang duong:\n");
-    // scanf("%d", &n);
+    printf("Nguyen Huynh Anh Khoa\nMSSV: 522H0046\N");
+    printf("Vui long nhap vao so quang duong:\n");
+    scanf("%d", &n);
     if (n <= 1){
         m = n * a;
     }
