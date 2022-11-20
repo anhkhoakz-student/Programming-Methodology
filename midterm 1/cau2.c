@@ -3,9 +3,9 @@
 int main(){
     double n, m;
     int a = 18000, b = 8000, c = 6000, d = 4000;
-    printf("Nguyen Huynh Anh Khoa\nMSSV: 522H0046\N");
+    printf("Nguyen Huynh Anh Khoa\nMSSV: 522H0046\n");
     printf("Vui long nhap vao so quang duong:\n");
-    scanf("%d", &n);
+    scanf("%lf", &n);
     if (n <= 1){
         m = n * a;
     }
@@ -19,6 +19,7 @@ int main(){
         m = a + b * 9 + c * 20 + d * (n - 30);
     }
     printf("So tien phai tra cho %f km la: %f", n, m);
+    return 0;
 }
 
 // 

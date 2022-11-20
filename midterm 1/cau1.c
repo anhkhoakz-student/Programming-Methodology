@@ -17,7 +17,7 @@ int main(){
         s = (m * 40) + ((m * 1.8) * 5 + ((m * 2.5) * (h - 45)));
     }
     else if (h > 50){
-        s =  s = (m * 40) + ((m * 2.5) * (h - 40));
+        s = (m * 40) + ((m * 2.5) * (h - 40));
     }
     printf("Tong so tien ma nhan vien thu nhap duoc trong 1 tuan: %d", s);
     return 0;
