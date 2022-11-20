@@ -36,7 +36,7 @@ void multiplication_table(int );
 
 int main(){
 	printf("Ten: Nguyen Huynh Anh Khoa\nMSSV: 522H0046\n");
-	int n = 200;
+	int n = 5;
 	// PerfectNumberList(n);
 	// printf("%d", isPerfectNumber(24));
 	// printf("%d", SumSquareNumber(n));
@@ -164,8 +164,8 @@ void PalidromeNotification(int n){
 }
 
 double calculate_sum_of_1perN(int n){
-	// chua lam duoc
-	int i;
+	// tinh 1 + 1/2 + 1/3 + ... + 1/n
+	double i;
 	double sum = 0;
 	for (i = 1; i <= n; i++){
 		sum += (1/i);
