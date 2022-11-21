@@ -1,12 +1,3 @@
-/*
-Nhap so nguyen n (n >0, n chan)
-
-6. Tinh S= 1+1/2+1/3+1/4+...+1/n
-
-9. SV tu dat cau hoi?
-10. SV tu dat cau hoi?
-*/
-
 # include <stdio.h>
 # include <math.h>
 
@@ -26,7 +17,7 @@ void ArmstrongList(int );
 
 int isPalindrome(int );
 
-void PalidromeNotification(int );
+void PalindromeNotification(int );
 
 double calculate_sum_of_1perN(int );
 
@@ -34,19 +25,37 @@ int factorial(int );
 
 void multiplication_table(int );
 
+int isDecreasing(int );
+
+void decreasingNotification(int );
+
+int isAllOddNumbers(int );
+
+void allOddNumbersNotification(int );
+
 int main(){
-	printf("Ten: Nguyen Huynh Anh Khoa\nMSSV: 522H0046\n");
-	int n = 5;
-	// PerfectNumberList(n);
-	// printf("%d", isPerfectNumber(24));
-	// printf("%d", SumSquareNumber(n));
-	// printf("%d", isArmstrong(n));
-	// ArmstrongList(n);
-	// printf("%d", isPalindrome(n));
-	// PalidromeNotification(n);
-	// printf("%lf", calculate_sum_of_1perN(n));
-	// printf("%d", factorial(n));
-	// multiplication_table(n);
+	printf("Ten: Nguyen Huynh Anh Khoa\tMSSV: 522H0046\n\n");
+	int n;
+	do {
+		printf("Nhap vao gia tri n: ");
+		scanf("%d", &n);
+		if (n <= 0 || n % 2 != 0){
+			printf("Vui long nhap vao mot so lon hon 0 va la so chan\n");
+		}
+	} while (n <= 0 || n % 2 != 0);
+	printf("Cac so hoan thien tu 1 den %d: ", n);
+	PerfectNumberList(n);
+	printf("Tong cac so chinh phuong tu 1 den %d: %d\n", n, SumSquareNumber(n));
+	printf("Co %d so hoan thien tu 1 den %d\n", PerfectNumberCount(n), n);
+	printf("Cac so Armstrong tu %d den 10,000: ", n);
+	ArmstrongList(n);
+	PalindromeNotification(n);
+	printf("Tong cua 1 + 1/2 + 1/3 + ... + 1/%d: %f\n", n, calculate_sum_of_1perN(n));
+	printf("%d! co gia tri: %d\n", n, factorial(n));
+	printf("Bang cuu chuong cua %d:\n", n);
+	multiplication_table(n);
+	decreasingNotification(n);
+	allOddNumbersNotification(n);
 	return 0;
 }
 
@@ -74,6 +83,7 @@ void PerfectNumberList (int n){
 			printf("%d ", i);
 		}
 	}
+	printf("\n");
 }
 
 int isSquareNumber (int n){
@@ -135,6 +145,7 @@ void ArmstrongList(int n){
 		if (isArmstrong(n) == 1){
 			printf("%d ", n);
 		}
+	printf("\n");
 }
 
 int isPalindrome(int n){
@@ -154,7 +165,7 @@ int isPalindrome(int n){
 	return 0;
 }
 
-void PalidromeNotification(int n){
+void PalindromeNotification(int n){
 	if (isPalindrome(n) == 1){
 		printf("%d la so Palidrome\n", n);
 	}
@@ -187,5 +198,56 @@ void multiplication_table(int n){
 	int i;
 	for (i = 1; i < 11; i++){
 		printf("%d x %d = %d\n", i, n, i * n);
+	}
+}
+
+int isDecreasing(int n){
+	// 1: n is decreasing ; 0: is not
+	int temp = n;
+	int lastDigit = n % 10;
+	temp /= 10;
+	while (temp != 0){
+		int nextLastDigit = temp % 10;
+		temp /= 10;
+		if (lastDigit > nextLastDigit){
+			return 0;
+		}
+		else {
+			lastDigit = nextLastDigit;
+		}
+	}
+	return 1;
+}
+
+void decreasingNotification(int n){
+	// thong bao n co giam dan hay khong
+	if (isDecreasing(n) == 1){
+		printf("%d dang giam dan tu trai sang phai\n", n);
+	}
+	else{
+		printf("%d khong giam dan tu trai sang phai\n", n);
+	}
+}
+
+int isAllOddNumbers(int n){
+	// 1: toan le; 0: khong
+	int remainder;
+	while (n != 0){
+		remainder = n % 10;
+		if (remainder % 2 == 0){
+			return 0;
+		}
+		n /= 10;
+	}
+	return 1;
+}
+
+void allOddNumbersNotification(int n){
+	// thong bao n co phai la so toan le hay khong
+	if (isAllOddNumbers(n) == 1){
+		printf("%d la so toan le", n);
+	}
+	else{
+		printf("%d khong la so toan le", n);
 	}
 }

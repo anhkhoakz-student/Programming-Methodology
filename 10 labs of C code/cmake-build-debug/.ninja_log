@@ -1,0 +1,22 @@
+# ninja log v5
+1	56	1669004764409623180	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex11.c.o	7804cd4b8e9901df
+84	115	1669004764472365164	CMakeFiles/10_labs_of_C_code.dir/lab_02/bai18.c.o	c83e082570b23fac
+1	57	1669004764409497582	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex12.c.o	ac004af1421856c0
+57	97	1669004764452028520	CMakeFiles/10_labs_of_C_code.dir/lab_02/bai15.c.o	cce53777a9a378ae
+1	57	1669004764409502039	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex2.c.o	2056de22dfe80231
+1	55	1669004764409716953	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex10.c.o	9984eb0f000a8df5
+2	57	1669004764409591396	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex3.c.o	2e1cfee03cb99034
+2	57	1669004764409487209	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex4.c.o	8f272dd9f953f9a8
+2	84	1669004764409600394	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex5.c.o	8488eca9fabbd5ee
+57	117	1669004764473454018	CMakeFiles/10_labs_of_C_code.dir/lab_02/bai17.c.o	8e96ebd0f1828081
+103	127	1669004764485647415	CMakeFiles/10_labs_of_C_code.dir/lab_03/test.c.o	91bb69b9315f39d6
+57	98	1669004764453154284	CMakeFiles/10_labs_of_C_code.dir/lab_02/bai16.c.o	62fcbef809a77a09
+98	128	1669004764485334314	CMakeFiles/10_labs_of_C_code.dir/lab_02/bai5_bai10.c.o	43575c3c80d6fb37
+91	119	1669004764476982610	CMakeFiles/10_labs_of_C_code.dir/lab_02/bai19.c.o	9786fe07f2607997
+56	103	1669004764458512658	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex8.c.o	980561cff66aa28f
+97	124	1669004764481268126	CMakeFiles/10_labs_of_C_code.dir/lab_02/bai4.c.o	fb2985c8f3eeb896
+55	91	1669004764446458232	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex7.c.o	7d1439b4fcddfcc1
+0	54	1669004764409479294	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex1.c.o	a6ecfab686a48627
+57	98	1669004764454189066	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex9.c.o	7e3e38d7b0cc4ebb
+54	104	1669004764459391431	CMakeFiles/10_labs_of_C_code.dir/lab_01/ex6.c.o	c96675072cf820d
+98	128	1669004764486348767	CMakeFiles/10_labs_of_C_code.dir/lab_03/lab3.c.o	5f857ae25647813f
