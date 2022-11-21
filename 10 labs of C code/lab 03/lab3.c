@@ -21,7 +21,7 @@ void PalindromeNotification(int );
 
 double calculate_sum_of_1perN(int );
 
-int factorial(int );
+long double factorial(int );
 
 void multiplication_table(int );
 
@@ -51,7 +51,7 @@ int main(){
 	ArmstrongList(n);
 	PalindromeNotification(n);
 	printf("Tong cua 1 + 1/2 + 1/3 + ... + 1/%d: %f\n", n, calculate_sum_of_1perN(n));
-	printf("%d! co gia tri: %d\n", n, factorial(n));
+	printf("%d! co gia tri: %Lf\n", n, factorial(n));
 	printf("Bang cuu chuong cua %d:\n", n);
 	multiplication_table(n);
 	decreasingNotification(n);
@@ -184,10 +184,10 @@ double calculate_sum_of_1perN(int n){
 	return sum;
 }
 
-int factorial(int n){
+long double factorial(int n){
 	// Tinh n!
 	int i;
-	int product = 1;
+	double product = 1;
 	for (i = 1; i <= n; i++){
 		product *= i;
 	}
