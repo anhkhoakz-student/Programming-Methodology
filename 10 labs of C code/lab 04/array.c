@@ -1,10 +1,4 @@
 /*
-1. Nhập mảng A với n số nguyên (0 < n < 1000) (Có thể random hay thủ công)
-
-3. Đếm có nhiêu phần từ chia hết cho k (k nhập từ bàn phím)
-4. Tính tổng các phần tử số chinh phương trong A
-5. Liệt kê các phần tử âm trong A
-6. Tìm gía trị min
 
 7. Mảng có toàn chẵn? đối xứng? chẵn lẻ xen kẻ? tăng dần? (chỉ chọn 1 ý)
 8. In ra các phần tử cực đại
@@ -19,28 +13,33 @@
 
 # define Max 1000
 
-void userInput(int [], int &);
+void userInput(int [], int *);
 void userOutput(int [], int);
 int isPrimeNumber(int );
 void printPrimeNumber(int [], int );
 int isDivided(int , int);
 // void k_valueInput(int );
 int countDivided(int [], int, int);
+int isSquareNumber(int );
+int sumSquareNumber(int [], int );
+int isNegative(int );
+void printNegatives (int [], int);
+int minNum(int [], int);
 
 int main()
 {
     int n, a[Max];
-    userInput(a, n);
+    userInput(a, &n);
     userOutput(a, n);
     printf("\nCac so nguyen to trong mang:\n");
     printPrimeNumber(a, n);
-    printf("\n");
     int k;
     printf("Vui long nhap vao gia tri K: ");
     scanf("%d", &k);
-    printf("So phan tu chia het cho %d: %d", k, countDivided(a, n, k));
-
-
+    printf("So phan tu chia het cho %d: %d\n", k, countDivided(a, n, k));
+    printf("Tong cac phan tu so chinh phuong trong mang: %d\n", sumSquareNumber(a, n));
+    printNegatives(a, n);
+    printf("\nGia tri nho nhat trong mang: %d", minNum(a, n));
     return 0;
 }
 
@@ -65,7 +64,7 @@ int main()
 //     while (n < 1 || n > 999);
 // }
 
-void userInput(int a[], int &n)
+void userInput(int a[], int *n)
 {
     do
     {   
@@ -99,7 +98,7 @@ void userOutput(int a[], int n)
 
 int isPrimeNumber(int n)
 /*
-Kiem tra so nguyen to
+Kiem tra so nguyen to: chia het cho 1 va chinh no
 1: la so nguyen to
 0: k la so nguyen to
 */
@@ -131,6 +130,7 @@ void printPrimeNumber(int a[], int n)
             printf("%d\t", a[i]);
         }
     }
+    printf("\n");
 }
 
 // void k_valueInput(int &k)
@@ -168,4 +168,58 @@ int countDivided (int a[], int n, int k)
             count ++;
     }
     return count;
+}
+
+int isSquareNumber(int n)
+// số chính phương bằng bình phương của một số nguyên
+{
+    int temp = sqrt(n);
+    temp = pow(temp, 2);
+    if (temp == n)
+        return 1;
+    return 0;
+}
+
+int sumSquareNumber(int a[], int n)
+// Tính tổng các phần tử số chinh phương trong A
+{
+    int i, sum = 0;
+    for (i = 0; i <= n; i++)
+    {
+        if (isSquareNumber(a[i]) == 1)
+            sum += a[i];
+    }
+    return sum;
+}
+
+int isNegative(int n)
+{
+    if (n < 0)
+        return 1;
+    return 0;
+}
+
+void printNegatives (int a[], int n)
+// Liệt kê các phần tử âm trong A
+{
+    printf("Cac so am trong mang:\n");
+    int i;
+    for (i = 0; i <= n; i++)
+    {
+        if (isNegative(a[i]) == 1)
+            printf("%d\t", a[i]);
+    }
+}
+
+int minNum(int a[], int n)
+// Tìm gía trị min
+{
+    int i;
+    int min = a[0];
+    for (i = 0; i <= n; i++)
+    {
+        if (a[i] <= min)
+            min = a[i];
+    }
+    return min;
 }
