@@ -10,10 +10,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
+# include <time.h>
 
 # define Max 1000
 
-void userInput(int [], int *);
+void userInput(int a[], int *n);
 void userOutput(int [], int);
 int isPrimeNumber(int );
 void printPrimeNumber(int [], int );
@@ -27,8 +28,10 @@ void printNegatives (int [], int);
 int minNum(int [], int);
 
 int main()
-{
+{  
+    srand( (int) time(0) );
     int n, a[Max];
+    printf("Ho va ten: Nguyen Huynh Anh Khoa\tMSSV: 522H0046\n");
     userInput(a, &n);
     userOutput(a, n);
     printf("\nCac so nguyen to trong mang:\n");
@@ -71,17 +74,17 @@ void userInput(int a[], int *n)
         int i;
         int minRand = -100, maxRand = 100;
         printf("Vui long nhap vao mot so nguyen duong: ");
-        scanf("%d", &n);
-        for (i = 0; i < n; i++)
+        scanf("%d", n);
+        for (i = 0; i < *n; i++)
         {
             a[i] = minRand + rand() % (maxRand + 1 - minRand);
         }
-        if (n <= 0 || n >= 1000)
+        if (*n <= 0 || *n >= 1000)
         {
             printf("Vui long nhap vao con so hop le!\n");
         } 
     }
-    while (n <= 0 || n >= 1000);
+    while (*n <= 0 || *n >= 1000);
 }
 
 void userOutput(int a[], int n)

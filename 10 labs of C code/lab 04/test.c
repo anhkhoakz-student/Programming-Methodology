@@ -1,6 +1,5 @@
 /*
 
-
 7. Mảng có toàn chẵn? đối xứng? chẵn lẻ xen kẻ? tăng dần? (chỉ chọn 1 ý)
 8. In ra các phần tử cực đại
 9. Tìm phần tử có tần suất xuất hiện nhiều nhất trong mảng và xuất hiện bao nhiêu lần
@@ -12,11 +11,9 @@
 # include <stdlib.h>
 # include <math.h>
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wc2x-extensions"
 # define Max 1000
 
-void userInput(int [], int *);
+void userInput(int a[], int *n);
 void userOutput(int [], int);
 int isPrimeNumber(int );
 void printPrimeNumber(int [], int );
@@ -32,22 +29,8 @@ int minNum(int [], int);
 int main()
 {
     int n, a[Max];
-    do
-    {   
-        int i;
-        int minRand = -100, maxRand = 100;
-        printf("Vui long nhap vao mot so nguyen duong: ");
-        scanf("%d", &n);
-        for (i = 0; i < n; i++)
-        {
-            a[i] = minRand + rand() % (maxRand + 1 - minRand);
-        }
-        if (n <= 0 || n >= 1000)
-        {
-            printf("Vui long nhap vao con so hop le!\n");
-        } 
-    }
-    while (n <= 0 || n >= 1000);
+    printf("Ho va ten: Nguyen Huynh Anh Khoa\tMSSV: 522H0046\n");
+    userInput(a, &n);
     userOutput(a, n);
     printf("\nCac so nguyen to trong mang:\n");
     printPrimeNumber(a, n);
@@ -82,7 +65,25 @@ int main()
 //     while (n < 1 || n > 999);
 // }
 
-
+void userInput(int a[], int *n)
+{
+    do
+    {   
+        int i;
+        int minRand = -100, maxRand = 100;
+        printf("Vui long nhap vao mot so nguyen duong: ");
+        scanf("%d", n);
+        for (i = 0; i < *n; i++)
+        {
+            a[i] = minRand + rand() % (maxRand + 1 - minRand);
+        }
+        if (*n <= 0 || *n >= 1000)
+        {
+            printf("Vui long nhap vao con so hop le!\n");
+        } 
+    }
+    while (*n <= 0 || *n >= 1000);
+}
 
 void userOutput(int a[], int n)
 {
