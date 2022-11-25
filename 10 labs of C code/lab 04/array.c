@@ -1,10 +1,7 @@
 /*
 
-7. Mảng có toàn chẵn? đối xứng? chẵn lẻ xen kẻ? tăng dần? (chỉ chọn 1 ý)
-8. In ra các phần tử cực đại
-9. Tìm phần tử có tần suất xuất hiện nhiều nhất trong mảng và xuất hiện bao nhiêu lần
-10. Tìm phần tử chẵn lớn nhất
-11. Sắp xếp mảng tăng dần
+7.  ?đối xứng? chẵn lẻ xen kẻ? tăng dần? (chỉ chọn 1 ý)
+
 */
 
 # include <stdio.h>
@@ -14,7 +11,7 @@
 
 # define Max 1000
 
-void userInput(int a[], int *n);
+void userInput(int [], int *);
 void userOutput(int [], int);
 int isPrimeNumber(int );
 void printPrimeNumber(int [], int );
@@ -26,10 +23,18 @@ int sumSquareNumber(int [], int );
 int isNegative(int );
 void printNegatives (int [], int);
 int minNum(int [], int);
+void isAllEvens(int [], int );
+int maxNum(int [], int );
+int mostAppear(int [], int );
+int greatEven(int [], int);
+// void quickSort(int [], int, int ); //Quicksort
+void sortArray(int [], int);
+void printSortArray(int [], int );
+int countAppear(int [], int , int);
 
 int main()
-{  
-    srand( (int) time(0) );
+{
+    srand( (int)time(0) );
     int n, a[Max];
     printf("Ho va ten: Nguyen Huynh Anh Khoa\tMSSV: 522H0046\n");
     userInput(a, &n);
@@ -42,7 +47,15 @@ int main()
     printf("So phan tu chia het cho %d: %d\n", k, countDivided(a, n, k));
     printf("Tong cac phan tu so chinh phuong trong mang: %d\n", sumSquareNumber(a, n));
     printNegatives(a, n);
-    printf("\nGia tri nho nhat trong mang: %d", minNum(a, n));
+    printf("\nGia tri nho nhat trong mang: %d\n", minNum(a, n));
+    // isAllEvens(a, n);
+    printf("Phan tu cuc dai trong mang: %d\n", maxNum(a, n));
+    printf("Phan tu chan lon nhat: %d\n", greatEven(a, n));
+    printf("Sap xep mang tang dan:\n");
+    sortArray(a, n);
+    // printSortArray(a, n );
+    printf("\nPhan tu xuat hien nhieu nhat: %d\n", mostAppear(a, n));
+    printf("Phan tu %d xuat hien %d lan\n", mostAppear(a, n), countAppear(a, n, mostAppear(a, n)));
     return 0;
 }
 
@@ -126,7 +139,7 @@ void printPrimeNumber(int a[], int n)
 // in so nguyen to
 {
     int i;
-    for (i = 0; i <= n; i++)
+    for (i = 0; i < n; i++)
     {
         if (isPrimeNumber(a[i]) == 1)
         {
@@ -165,7 +178,7 @@ Kiem tra n co chia het cho k khong
 int countDivided (int a[], int n, int k)
 {
     int i, count = 0;
-    for (i = 0; i <= n; i++)
+    for (i = 0; i < n; i++)
     {
         if (isDivided(a[i], k) == 1)
             count ++;
@@ -187,7 +200,7 @@ int sumSquareNumber(int a[], int n)
 // Tính tổng các phần tử số chinh phương trong A
 {
     int i, sum = 0;
-    for (i = 0; i <= n; i++)
+    for (i = 0; i < n; i++)
     {
         if (isSquareNumber(a[i]) == 1)
             sum += a[i];
@@ -207,7 +220,7 @@ void printNegatives (int a[], int n)
 {
     printf("Cac so am trong mang:\n");
     int i;
-    for (i = 0; i <= n; i++)
+    for (i = 0; i < n; i++)
     {
         if (isNegative(a[i]) == 1)
             printf("%d\t", a[i]);
@@ -219,10 +232,108 @@ int minNum(int a[], int n)
 {
     int i;
     int min = a[0];
-    for (i = 0; i <= n; i++)
+    for (i = 0; i < n; i++)
     {
-        if (a[i] <= min)
+        if (a[i] < min)
             min = a[i];
     }
     return min;
+}
+
+void isAllEvens(int a[], int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        if (a[i] % 2 != 0)
+            printf("Mang toan chan\n");
+    }
+    printf("Mang ton tai so le\n");
+}
+
+int maxNum(int a[], int n)
+// In ra các phần tử cực đại
+{
+    int i;
+    int maxValue = a[0];
+    for (i = 0; i < n; i++)
+    {
+        if (a[i] > maxValue)
+            maxValue = a[i];
+    }
+    return maxValue;
+}
+
+int greatEven(int a[], int n)
+// Tìm phần tử chẵn lớn nhất
+{
+    int i;
+    int evenMax = a[0];
+    for (i = 0; i < n; i++)
+    {
+        if (a[i] % 2 == 0 && a[i] >= evenMax)
+            evenMax = a[i];
+    }
+    return evenMax;
+}
+
+// tham khao thuat toan quicksort
+
+void sortArray(int a[], int n)
+// Sắp xếp mảng tăng dần
+{
+    int temp;
+    int i, j;
+    for (i = 0; i < n - 1; i++)
+    {
+        for (j = i + 1; j < n; j++)
+        {
+            if (a[i] > a[j])
+            {
+                temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+    for (i = 0; i < n; i++)
+    {
+        printf("%d\t", a[i]);
+    }
+}
+
+
+
+int countAppear(int a[], int n, int x)
+// kiem tra so lan xuat hien cua x trong a
+{
+    int temp = 0;
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        if (a[i] == x)
+        {
+            temp++;
+        }
+    }
+    return temp;
+}
+
+int mostAppear(int a[], int n)
+/*
+Tìm phần tử có tần suất xuất hiện nhiều nhất trong mảng
+xuất hiện bao nhiêu lần
+*/
+{
+    int i, temp1, temp = countAppear(a, n, a[0]), index = 0;
+    for (i = 1; i < n; i++)
+    {
+        temp1 = countAppear(a, n, a[i]);
+        if (temp < temp1)
+        {
+            temp = temp1;
+            index = i;
+        }
+    }
+    return a[index];
 }
