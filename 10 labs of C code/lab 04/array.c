@@ -27,10 +27,12 @@ void isAllEvens(int [], int );
 int maxNum(int [], int );
 int mostAppear(int [], int );
 int greatEven(int [], int);
-// void quickSort(int [], int, int ); //Quicksort
 void sortArray(int [], int);
-void printSortArray(int [], int );
 int countAppear(int [], int , int);
+void swap(int *, int *);
+int partition(int [], int , int );
+void quickSort(int [], int , int );
+void printArray(int [], int );
 
 int main()
 {
@@ -39,23 +41,24 @@ int main()
     printf("Ho va ten: Nguyen Huynh Anh Khoa\tMSSV: 522H0046\n");
     userInput(a, &n);
     userOutput(a, n);
-    printf("\nCac so nguyen to trong mang:\n");
+    printf("\n\nCac so nguyen to trong mang:\n");
     printPrimeNumber(a, n);
     int k;
-    printf("Vui long nhap vao gia tri K: ");
+    printf("\nVui long nhap vao gia tri K: ");
     scanf("%d", &k);
-    printf("So phan tu chia het cho %d: %d\n", k, countDivided(a, n, k));
-    printf("Tong cac phan tu so chinh phuong trong mang: %d\n", sumSquareNumber(a, n));
+    printf("\nSo phan tu chia het cho %d: %d\n", k, countDivided(a, n, k));
+    printf("\nTong cac phan tu so chinh phuong trong mang: %d\n", sumSquareNumber(a, n));
     printNegatives(a, n);
     printf("\nGia tri nho nhat trong mang: %d\n", minNum(a, n));
     // isAllEvens(a, n);
-    printf("Phan tu cuc dai trong mang: %d\n", maxNum(a, n));
-    printf("Phan tu chan lon nhat: %d\n", greatEven(a, n));
-    printf("Sap xep mang tang dan:\n");
-    sortArray(a, n);
-    // printSortArray(a, n );
+    printf("\nPhan tu cuc dai trong mang: %d\n", maxNum(a, n));
+    printf("\nPhan tu chan lon nhat: %d\n", greatEven(a, n));
+    printf("\nSap xep mang tang dan:\n");
+    quickSort(a, 0, n-1);
+    // sortArray(a, n);
     printf("\nPhan tu xuat hien nhieu nhat: %d\n", mostAppear(a, n));
-    printf("Phan tu %d xuat hien %d lan\n", mostAppear(a, n), countAppear(a, n, mostAppear(a, n)));
+    printf("\nPhan tu %d xuat hien %d lan\n\n", mostAppear(a, n), countAppear(a, n, mostAppear(a, n)));
+    
     return 0;
 }
 
@@ -85,8 +88,8 @@ void userInput(int a[], int *n)
     do
     {   
         int i;
-        int minRand = -100, maxRand = 100;
-        printf("Vui long nhap vao mot so nguyen duong: ");
+        int minRand = -10000, maxRand = 10000;
+        printf("\nVui long nhap vao mot so nguyen duong: ");
         scanf("%d", n);
         for (i = 0; i < *n; i++)
         {
@@ -103,7 +106,7 @@ void userInput(int a[], int *n)
 void userOutput(int a[], int n)
 {
     int i;
-    printf("Cac phan tu trong mang:\n");
+    printf("\nCac phan tu trong mang:\n");
     for (i = 0; i < n; i ++)
     {
         printf("%d\t", a[i]);
@@ -218,13 +221,14 @@ int isNegative(int n)
 void printNegatives (int a[], int n)
 // Liệt kê các phần tử âm trong A
 {
-    printf("Cac so am trong mang:\n");
+    printf("\nCac so am trong mang:\n");
     int i;
     for (i = 0; i < n; i++)
     {
         if (isNegative(a[i]) == 1)
             printf("%d\t", a[i]);
     }
+    printf("\n");
 }
 
 int minNum(int a[], int n)
@@ -300,9 +304,8 @@ void sortArray(int a[], int n)
     {
         printf("%d\t", a[i]);
     }
+    printf("\n");
 }
-
-
 
 int countAppear(int a[], int n, int x)
 // kiem tra so lan xuat hien cua x trong a
@@ -336,4 +339,57 @@ xuất hiện bao nhiêu lần
         }
     }
     return a[index];
+}
+
+// function to swap elements
+void swap(int *a, int *b) {
+  int t = *a;
+  *a = *b;
+  *b = t;
+}
+
+// function to find the partition position
+int partition(int array[], int low, int high) {
+  
+  // select the rightmost element as pivot
+  int pivot = array[high];
+  
+  // pointer for greater element
+  int i = (low - 1);
+
+  // traverse each element of the array
+  // compare them with the pivot
+  for (int j = low; j < high; j++) {
+    if (array[j] <= pivot) {
+        
+      // if element smaller than pivot is found
+      // swap it with the greater element pointed by i
+      i++;
+      
+      // swap element at i with element at j
+      swap(&array[i], &array[j]);
+    }
+  }
+
+  // swap the pivot element with the greater element at i
+  swap(&array[i + 1], &array[high]);
+  
+  // return the partition point
+  return (i + 1);
+}
+
+void quickSort(int array[], int low, int high) {
+  if (low < high) {
+    
+    // find the pivot element such that
+    // elements smaller than pivot are on left of pivot
+    // elements greater than pivot are on right of pivot
+    int pi = partition(array, low, high);
+    
+    // recursive call on the left of pivot
+    quickSort(array, low, pi - 1);
+    
+    // recursive call on the right of pivot
+    quickSort(array, pi + 1, high);
+  }
 }
