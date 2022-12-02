@@ -23,7 +23,8 @@ int sumSquareNumber(int [], int );
 int isNegative(int );
 void printNegatives (int [], int);
 int minNum(int [], int);
-void isAllEvens(int [], int );
+int isAllEvens(int [], int );
+void printAllEvens(int [], int );
 int maxNum(int [], int );
 int mostAppear(int [], int );
 int greatEven(int [], int);
@@ -50,12 +51,12 @@ int main()
     printf("\nTong cac phan tu so chinh phuong trong mang: %d\n", sumSquareNumber(a, n));
     printNegatives(a, n);
     printf("\nGia tri nho nhat trong mang: %d\n", minNum(a, n));
-    // isAllEvens(a, n);
+    printAllEvens(a, n);
     printf("\nPhan tu cuc dai trong mang: %d\n", maxNum(a, n));
     printf("\nPhan tu chan lon nhat: %d\n", greatEven(a, n));
     printf("\nSap xep mang tang dan:\n");
-    quickSort(a, 0, n-1);
-    // sortArray(a, n);
+    // quickSort(a, 0, n-1);
+    sortArray(a, n);
     printf("\nPhan tu xuat hien nhieu nhat: %d\n", mostAppear(a, n));
     printf("\nPhan tu %d xuat hien %d lan\n\n", mostAppear(a, n), countAppear(a, n, mostAppear(a, n)));
     
@@ -63,24 +64,24 @@ int main()
 }
 
 
-// void userInput(int a[], int &n)
+// void userInput(int a[], int *n)
 // {
 //     do
 //     {   
 //         int i;
 //         printf("Vui long nhap vao mot so nguyen duong: ");
-//         scanf("%d", &n);
-//         for (i = 0; i < n; i++)
+//         scanf("%d", n);
+//         for (i = 0; i < *n; i++)
 //         {
 //             printf("Vui long nhap vao phan tu thu %d: ", i + 1);
 //             scanf("%d", &a[i]);
 //         }
-//         if (n < 1 || n > 999)
+//         if (*n < 1 || *n > 999)
 //         {
 //             printf("Vui long nhap vao con so hop le!\n");
 //         } 
 //     }
-//     while (n < 1 || n > 999);
+//     while (*n < 1 || *n > 999);
 // }
 
 void userInput(int a[], int *n)
@@ -122,18 +123,13 @@ Kiem tra so nguyen to: chia het cho 1 va chinh no
 0: k la so nguyen to
 */
 {
-    if (n < 2 || n % 2 == 0)
+    int i;
+    if (n < 2)
         return 0;
-    else if (n == 2)
-        return 1;
-    else
+    for (i = 2; i <= sqrt(n); i++)
     {
-        int i;
-        for (i = 3; i < sqrt((float)n); i+=2)
-        {
-            if (n % i == 0)
-                return 0;
-        }
+        if (n % i == 0)
+            return 0;
     }
     return 1;
 }
@@ -244,15 +240,26 @@ int minNum(int a[], int n)
     return min;
 }
 
-void isAllEvens(int a[], int n)
+int isAllEvens(int a[], int n)
 {
     int i;
     for (i = 0; i < n; i++)
     {
         if (a[i] % 2 != 0)
-            printf("Mang toan chan\n");
+            return 0;
     }
-    printf("Mang ton tai so le\n");
+    return 1;
+}
+
+void printAllEvens(int a[], int n)
+{
+    int i;
+    if (isAllEvens(a, n) == 1){
+        printf("\nMang toan chan\n");
+    }
+    else{
+        printf("\nMang ton tai so le\n");
+    }
 }
 
 int maxNum(int a[], int n)
