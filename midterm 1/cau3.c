@@ -14,13 +14,13 @@ int main(){
     d = sqrt(pow((xA - x0), 2) + pow((yA - y0), 2));
     
     if (d == r){
-        printf("Diem A (%lf, %lf) nam tren duong tron\n", xA, yA);
+        printf("Diem A (%f, %f) nam tren duong tron\n", xA, yA);
     }
     else if (d < r){
-        printf("Diem A (%lf, %lf) nam trong duong tron\n", xA, yA);
+        printf("Diem A (%f, %f) nam trong duong tron\n", xA, yA);
     }
     else if (d > r){
-        printf("Diem A (%lf, %lf) nam ngoai duong tron\n", xA, yA);
+        printf("Diem A (%f, %f) nam ngoai duong tron\n", xA, yA);
     }
     return 0;
 }
