@@ -1,22 +1,43 @@
 # include <stdio.h>
-# include <math.h>
-int sumEvenNumber(int);
 
-int main(){
-	printf("Ten: Nguyen Huynh Anh Khoa\nMSSV: 522H0046\n");
-    int n;
-    printf("Vui long nhap vao gioi han: ");
-    scanf("%d", &n);
-    printf("Tong cac so chan tu 1 toi %d: %d", n, sumEvenNumber(n));
-	return 0;
-}
+int main()
+{
+    int a[1000], i, n, x, temp = 0;
+    do
+    {   
+        printf("Vui long nhap vao mot so nguyen duong: ");
+        scanf("%d", &n);
+        for (i = 0; i < n; i++)
+        {
+            printf("Vui long nhap vao phan tu thu %d: ", i + 1);
+            scanf("%d", &a[i]);
+        }
+        if (n < 1 || n > 999)
+        {
+            printf("Vui long nhap vao con so hop le!\n");
+        } 
+    }
+    while (n < 1 || n > 999);
 
-int sumEvenNumber(int n){
-    int i, sum = 0;
-    for (i = 0; i <= n; i++){
-        if (i % 2 == 0){
-            sum += i;
+    printf("Nhap vao so can tim: ");
+    scanf("%d", &x);
+
+    for (i = 0; i < n; i ++)
+    {
+        if (a[i] == x)
+        {
+            temp = i;
+            break;
         }
     }
-    return sum;
+
+    if (temp == 1)
+    {
+        printf("%d", temp + 1);
+    }
+    else if (temp == 0)
+    {
+        printf("-1");
+    }
+    return 0;
 }
